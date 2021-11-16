@@ -25,6 +25,13 @@ class CatalogController extends Controller
     }
     public function postCreate(Request $request)
     {
+        $validated = $request->validate([
+            'titulo' => 'required',
+            'year' => 'required|numeric',
+            'director' => 'required',
+            'poster' => 'required',
+            'sinopsis' => 'required'
+        ]);
         $pelicula = new pelicula();
         $pelicula->titulo = $request->input('titulo');
         $pelicula->year = $request->input('year');

@@ -7,12 +7,12 @@
         <form method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo">
+                <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo" value="{{old('titulo')}}">
                 <label for="titulo">Titulo</label>
               </div>
 
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="director" name="director" placeholder="Director">
+                <input type="text" class="form-control" id="director" name="director" placeholder="Director" value="{{old('director')}}">
                 <label for="director">Director</label>
               </div>
 
@@ -24,7 +24,7 @@
 
 
               <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="year" name="year" placeholder="Year">
+                <input type="number" class="form-control" id="year" name="year" placeholder="Year" value="{{old('year')}}">
                 <label for="year">Año</label>
               </div>
               <div class="form-check mb-3">
@@ -35,12 +35,20 @@
               </div>
 
               <div class="form-floating mb-3 ">
-                <textarea class="form-control" placeholder="Sinopsis" name="sinopsis" id="sinopsis" style="height: 100px"></textarea>
+                <textarea class="form-control" placeholder="Sinopsis" name="sinopsis" id="sinopsis" style="height: 100px" value="{{old('titulo')}}"></textarea>
                 <label for="sinopsis">Sinopsis</label>
               </div>
 
               <button class="btn btn-primary" type="submit">Guardar</button>
         </form>
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+
+                @endforeach
+            </ul>
+        @endif
     </div>
 </div>
 
